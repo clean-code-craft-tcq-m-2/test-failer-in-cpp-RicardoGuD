@@ -14,9 +14,14 @@ char size(int cms) {
 }
 
 int main() {
+//I assumed sizes 38 and 42 are medium
+    assert(size(32) == 'S');
     assert(size(37) == 'S');
+    assert(size(38) == 'M');
     assert(size(40) == 'M');
+    assert(size(42) == 'M');
     assert(size(43) == 'L');
+    assert(size(48) == 'L');
     std::cout << "All is well (maybe!)\n";
     return 0;
 }
