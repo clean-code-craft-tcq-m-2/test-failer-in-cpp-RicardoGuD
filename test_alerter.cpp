@@ -1,4 +1,4 @@
-#include "test_alerter.h"
+#include "alerterTest.h"
 
 void testFailureCount(float temperatureValueFarenheit, int& alertFailureCount) {
 
