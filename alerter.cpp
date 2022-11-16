@@ -1,5 +1,5 @@
 #include <iostream>
-#include "alerterTest.h"
+#include "test_alerter.h"
 
 int alertFailureCount = 0;
 
