@@ -1,5 +1,5 @@
-#ifndef alerterTest_h
-#define alerterTest_h
+#ifndef test_alerter_h
+#define test_alerter_h
 
 #include <assert.h>
 #include "alertInCelcius.h"
