@@ -23,4 +23,4 @@ jobs:
     - name: alerter fail
       run: |
         g++ -Wall -Wextra -Werror networkAlertStub.cpp alertInCelcius.cpp alerterTest.cpp alerter.cpp -o alerter.out
-        bash .github/workflows/expectfail.sh ./alerter.out
+        ./alerter.out
