@@ -1,32 +1,23 @@
 #include <iostream>
-#include <assert.h>
-
-int alertFailureCount = 0;
-
-int networkAlertStub(float celcius) {
-    std::cout << "ALERT: Temperature is " << celcius << " celcius.\n";
-    // Return 200 for ok
-    // Return 500 for not-ok
-    // stub always succeeds and returns 200
-    return 200;
-}
-
-void alertInCelcius(float farenheit) {
-    float celcius = (farenheit - 32) * 5 / 9;
-    int returnCode = networkAlertStub(celcius);
-    if (returnCode != 200) {
-        // non-ok response is not an error! Issues happen in life!
-        // let us keep a count of failures to report
-        // However, this code doesn't count failures!
-        // Add a test below to catch this bug. Alter the stub above, if needed.
-        alertFailureCount += 0;
-    }
-}
+#include "alerterTest.h"
 
 int main() {
-    alertInCelcius(400.5);
-    alertInCelcius(303.6);
+    int alertFailureCount = 0;
+    
+    testFailureCount(303.5, alertFailureCount); //error code 200
+    assert(alertFailureCount == 0);
+    testFailureCount(391.9, alertFailureCount); //error code 200
+    assert(alertFailureCount == 0);
+    testFailureCount(392, alertFailureCount); //error code 500
+    assert(alertFailureCount == 1);
+    testFailureCount(392.1, alertFailureCount); //error code 500
+    assert(alertFailureCount == 2);  
+    testFailureCount(400.5, alertFailureCount); //error code 500
+    assert(alertFailureCount == 3); 
+    testFailureCount(100.5, alertFailureCount); //error code 200
+    assert(alertFailureCount == 3); 
     std::cout << alertFailureCount << " alerts failed.\n";
-    std::cout << "All is well (maybe!)\n";
+    std::cout << "All is well\n";
+
     return 0;
 }

@@ -1,21 +1,14 @@
 #include <iostream>
-#include <assert.h>
-
-int printColorMap() {
-    const char* majorColor[] = {"White", "Red", "Black", "Yellow", "Violet"};
-    const char* minorColor[] = {"Blue", "Orange", "Green", "Brown", "Slate"};
-    int i = 0, j = 0;
-    for(i = 0; i < 5; i++) {
-        for(j = 0; j < 5; j++) {
-            std::cout << i * 5 + j << " | " << majorColor[i] << " | " << minorColor[i] << "\n";
-        }
-    }
-    return i * j;
-}
+#include "misalignedTest.h"
 
 int main() {
-    int result = printColorMap();
-    assert(result == 25);
-    std::cout << "All is well (maybe!)\n";
+    printColorMap();
+    test_stringAlignment(formColorMapString(1,"white", "blue"));
+    test_stringAlignment(formColorMapString(7,"red", "orange"));
+    test_stringAlignment(formColorMapString(13,"black", "green"));
+    test_stringAlignment(formColorMapString(19,"yellow", "brown"));
+    test_stringAlignment(formColorMapString(25,"violet", "slate"));
+    test_colorPairNumbers();
+    std::cout << "All is well\n";
     return 0;
 }
